@@ -36,8 +36,8 @@ def calc_time_transloc(jsn):
 
 
 def main():
-    walk_time = 3 # Time to get to the stop (minutes)
     c = get_config('config.ini')
+    walk_time = float(c['User']['walk_time'])
     d_arvl, d_dif = calc_time_transloc(fetch_json_transloc(c))
     print("Nearest bus will arrive at {}".format(d_arvl.strftime('%H:%M')))
     print("Leave in {} minutes".format(round(d_dif.seconds/60 - walk_time, 2)))
